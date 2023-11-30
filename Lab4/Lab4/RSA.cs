@@ -15,7 +15,7 @@ namespace Lab4
         {
             BigInteger mensaje = CalculateSHA256HashAsBigInteger(m);
             // Escoge dos números primos grandes (p y q)
-            BigInteger p = GenerateLargePrime(256);//BORRAR se ingresa la cantidad de bits para generar el número primo 1024 se tarda mucho en cargar
+            BigInteger p = GenerateLargePrime(256);
             BigInteger q = GenerateLargePrime(256);
 
             // Calcula n (producto de p y q)
@@ -50,15 +50,15 @@ namespace Lab4
             }
         }
 
-        public BigInteger Cifrado(BigInteger M, BigInteger K, BigInteger n)
+        public BigInteger CifradoMensaje(BigInteger M, BigInteger K, BigInteger n)
         {
             BigInteger cifrado = 0;
-            cifrado = BigInteger.Pow(1454864648464, (int)K) % n;//BORRAR en vez del número 1454864648464 debería ir el hash del mensaje peeero lo mismo, si son números muy grandes
+            cifrado = BigInteger.Pow(M, (int)K) % n;
             //se pone numeros fijos dado que se tarda mucho en realizar la operacion 
             return cifrado;
         }
 
-        public BigInteger Descifrado(BigInteger C, BigInteger j, BigInteger n) //BORRAR funciona peeero al ser números tan grandes literal se tarda una eternidad en encontrarlo.
+        public BigInteger Descifrado(BigInteger C, BigInteger j, BigInteger n) 
         //se usa la clave publica que si se encuentra rapido, y se manda a archivo de texto
         {
             BigInteger mensaje = 0;
@@ -188,6 +188,55 @@ namespace Lab4
             }
 
             return false;
+        }
+
+
+        public void pruebasx()
+        {
+            BigInteger C = 0;
+            BigInteger j = 0;
+            BigInteger n = 0;
+
+            Descifrado(C, j, n);
+            CifradoMensaje(C, j, n);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public BigInteger Cifrado(BigInteger M, BigInteger K, BigInteger n)
+        {
+            BigInteger cifrado = 0;
+            cifrado = BigInteger.Pow(1454864648464, (int)K) % n;
+            //se pone numeros fijos dado que se tarda mucho en realizar la operacion 
+            return cifrado;
         }
 
     }
